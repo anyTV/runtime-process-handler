@@ -4,16 +4,16 @@ const moment = require('moment');
 
 class Message {
 
-    constructor(raw_message, project) {
+    constructor(raw_message, sender) {
         this.message = raw_message;
-        this.project = project;
+        this.sender = sender;
     }
 
     format() {
 
         return {
-            time_happened: moment.format('YYYY-MM-DD HH:mm:ss'),
-            project: this.project,
+            time_happened: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+            destination: this.sender,
             details: this.message,
         };
     }
