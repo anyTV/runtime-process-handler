@@ -6,7 +6,7 @@ class ErrorReport {
     constructor (
         process,
         config,
-        handler
+        callback
     ) {
 
         if(!_.isArray(config)) {
@@ -15,31 +15,29 @@ class ErrorReport {
 
         this.process = process;
         this.config = config;
-        this.handler = handler;
+        this.callback = callback;
     }
 
     start() {
         _.forEach(this.config, _error => {
             console.log('Starting ', _error, ' listener from zeref');
+
             this.process.on(_error, (encountered_error) => {
-                this.handler(this.format_report(encountered_error));
+
+                this.callback(this.format_report(encountered_error));
             });
         });
     }
 
     format_report(_error) {
-        /** attach all information **/
+        /** TODO:
+         * 1. Format error report message.
+         *  - Must provide report time
+         *  - Must provide what project does the error happened
+         *  - Must provide what file an error occurred
+         * **/
         return 'FORMATTED ERROR';
     }
-
-    when() {
-        /** should append time happened **/
-    }
-
-    where() {
-        /** should append where it happened (or what project) **/
-    }
-
 }
 
 module.exports = ErrorReport;
