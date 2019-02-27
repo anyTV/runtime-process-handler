@@ -1,5 +1,5 @@
 {
-  "name": "zeref",
+  "name": "zeref-error-reporting",
   "version": "1.0.0",
   "description": "A wrapper for using different error reporting mechanism.",
   "main": "index.js",
