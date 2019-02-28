@@ -6,7 +6,6 @@ class ErrorReport {
 
     constructor (
         process,
-        destination,
         config,
         callback
     ) {
@@ -17,7 +16,6 @@ class ErrorReport {
 
         this.process = process;
         this.config = config;
-        this.destination = _.last(_.split(destination, '/'));
         this.callback = callback;
     }
 
@@ -27,7 +25,7 @@ class ErrorReport {
 
             this.process.on(_error, (encountered_error) => {
 
-                this.callback(new message(encountered_error, this.destination).format());
+                this.callback(new message(encountered_error).format());
             });
         });
     }
