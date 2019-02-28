@@ -1,18 +1,19 @@
 'use strict';
 
-const moment = require('moment');
-const config = require('./config/config');
-
 class Message {
 
-    constructor(raw_message) {
+    constructor(
+        raw_message,
+        time_occurrence
+    ) {
         this.message = raw_message;
+        this.time_occurrence = time_occurrence
     }
 
     format() {
 
         return {
-            time_occurrence: moment.utc().format(config.DATE_TIME_FORMAT),
+            time_occurrence: this.time_occurrence,
             details: this.message,
         };
     }
