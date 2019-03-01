@@ -1,6 +1,8 @@
 'use strict';
+
 const _ = require('lodash');
 const moment = require('moment');
+
 const message = require('./message');
 const config = require('./config/config');
 
@@ -23,7 +25,6 @@ class ErrorReport {
 
     start() {
         _.forEach(this.config, _error => {
-            console.log('Starting ', _error, ' listener from zeref');
 
             this.process.on(_error, (encountered_error) => {
                 const time_occurrence = moment.utc().format(config.DATE_TIME_FORMAT);
