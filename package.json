@@ -1,7 +1,7 @@
 {
-  "name": "zeref-error-reporting",
+  "name": "runtime-process-handler",
   "version": "1.0.0",
-  "description": "A wrapper for using different error reporting mechanism.",
+  "description": "Handler for runtime processes and events on NodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.11",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "serialize-error": "^3.0.0"
   }
 }

@@ -2,11 +2,12 @@
 
 const _ = require('lodash');
 const moment = require('moment');
+const serialize_error = require('serialize-error');
 
 const message = require('./message');
 const config = require('./config/config');
 
-class ErrorReport {
+class Process {
 
     constructor (
         process,
@@ -24,19 +25,24 @@ class ErrorReport {
     }
 
     start() {
-        _.forEach(this.config, _error => {
+        _.forEach(this.config, event => {
 
-            this.process.on(_error, (encountered_error) => {
-                const time_occurrence = moment.utc().format(config.DATE_TIME_FORMAT);
+            this.process.on(event, (event_callback) => {
+                const response_time = moment.utc().format(config.DATE_TIME_FORMAT);
+
+                if(event_callback instanceof Error) {
+
+                    event_callback = serialize_error(event_callback);
+                }
 
                 this.callback(
                     new message(
-                        encountered_error,
-                        time_occurrence
+                        event_callback,
+                        response_time
                     ).format());
             });
         });
     }
 }
 
-module.exports = ErrorReport;
+module.exports = Process;
