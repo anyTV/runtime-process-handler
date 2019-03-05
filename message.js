@@ -7,7 +7,7 @@ class Message {
         time
     ) {
         this.message = raw_message;
-        this.time = time
+        this.time = time;
     }
 
     format() {

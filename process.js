@@ -9,13 +9,13 @@ const config = require('./config/config');
 
 class Process {
 
-    constructor (
+    constructor(
         process,
         config,
         callback
     ) {
 
-        if(!_.isArray(config)) {
+        if (!_.isArray(config)) {
             config = _.toArray(config);
         }
 
@@ -30,7 +30,7 @@ class Process {
             this.process.on(event, (event_callback) => {
                 const response_time = moment.utc().format(config.DATE_TIME_FORMAT);
 
-                if(event_callback instanceof Error) {
+                if (event_callback instanceof Error) {
 
                     event_callback = serialize_error(event_callback);
                 }
