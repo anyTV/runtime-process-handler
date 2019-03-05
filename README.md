@@ -11,3 +11,30 @@ This library provides the following:
 
 # Installation
 To use this, simply install it on a nodejs project by `npm i runtime-process-handler`
+
+# Usage
+
+1. On your index.js / server.js / app.js, require the package
+```javascript
+const RuntimeProcessHandler = require('runtime-process-handler');
+```
+2. Create an instance of the handler
+```javascript
+let runtimeProcessHandler = new RuntimeProcessHandler(
+  processInstanceOfYourNodeJsProject, // process
+  listOfEventsToHandleInArrayFormat, // [ 'processEvent1', 'processEvent2' ... ]
+  callbackWhenEventsAreTriggered
+);
+```
+
+3. Start the runtime process handler
+```javascript
+runtimeProcessHandler.start();
+```
+
+4. (Sample) Your events' callback function
+```javascript
+function callbackWhenEventsAreTriggered (res) {
+   sendEmailFunc(res);
+}
+```
