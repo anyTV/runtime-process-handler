@@ -12,6 +12,10 @@ This library provides the following:
 # Installation
 To use this, simply install it on a nodejs project by `npm i runtime-process-handler`
 
+# Prerequisite
+To be able to know what are the process events you can trigger or start listening to, you may refer to the following reference:
+[NodeJS Process](https://nodejs.org/api/process.html)
+
 # Usage
 
 1. On your index.js / server.js / app.js, require the package
