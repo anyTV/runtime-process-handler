@@ -2,7 +2,7 @@
 
 const assert = require('chai').assert;
 
-const process = require('../process');
+const _process = require('../process');
 const message = require('../message');
 
 const dummy_data = require('./dummy_data');
@@ -11,15 +11,27 @@ describe('Runtime Process Monitoring', () => {
 
     describe('Process Class', () => {
 
-        it('should assign global var process, config, and callback in constructor', () => {
+        it('should run the callback when an event has been triggered', async () => {
 
-        });
+            let test_callback = (message) => {
 
-        it('should create all event listeners passed', () => {
+                assert.equal(message.details.message, dummy_data.formatted_message.details);
+            };
 
-        });
+            let process_instance = new _process(
+                process,
+                dummy_data.process_requirements.config,
+                test_callback
+            );
 
-        it('should run the callback when an event has been triggered', () => {
+            process_instance.start();
+
+            Promise
+                .resolve( 'Test resolve' )
+                .then(() => {
+                        throw(new Error(dummy_data.formatted_message.details));
+                    }
+                );
 
         });
 
