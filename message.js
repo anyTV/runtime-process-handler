@@ -1,9 +1,5 @@
 'use strict';
 
-const moment = require('moment');
-
-const config = require('./config/config');
-
 class Message {
 
     constructor(
@@ -11,8 +7,9 @@ class Message {
         time
     ) {
 
-        if(!moment(time, config.DATE_TIME_FORMAT, true).isValid()) {
-            time = moment.utc().format(config.DATE_TIME_FORMAT);
+        if(!time) {
+
+            time = (new Date()).toUTCString();
         }
 
         this.message = raw_message;

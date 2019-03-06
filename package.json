@@ -12,7 +12,6 @@
     "chai": "^4.2.0",
     "lodash": "^4.17.11",
     "mocha": "^6.0.2",
-    "moment": "^2.24.0",
     "serialize-error": "^3.0.0"
   }
 }

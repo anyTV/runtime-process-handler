@@ -1,11 +1,9 @@
 'use strict';
 
 const _ = require('lodash');
-const moment = require('moment');
 const serialize_error = require('serialize-error');
 
 const message = require('./message');
-const config = require('./config/config');
 
 class Process {
 
@@ -28,7 +26,7 @@ class Process {
         _.forEach(this.config, event => {
 
             this.process.on(event, (event_callback) => {
-                const response_time = moment.utc().format(config.DATE_TIME_FORMAT);
+                const response_time = (new Date()).toUTCString();
 
                 if (event_callback instanceof Error) {
 
