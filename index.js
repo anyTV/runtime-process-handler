@@ -1,3 +1,3 @@
-const ErrorReport = require('./error_report');
+const Process = require('./process');
 
-module.exports = ErrorReport;
+module.exports = Process;
